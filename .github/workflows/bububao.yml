@@ -16,8 +16,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
-    env:
-        BBB_bububaoTOKEN: ${{ secrets.BBB_bububaoTOKEN }}	
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -26,14 +24,12 @@ jobs:
         with:
           node-version: 12.x
       - name: npm install
-        if: env.BBB_bububaoTOKEN
         run: |
           npm install
           
       - name: '运行 【步步宝】'
-        if: env.BBB_bububaoTOKEN
         run: |
-          node Task/bububao2.js
+          node Task/bububao.js
         
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
