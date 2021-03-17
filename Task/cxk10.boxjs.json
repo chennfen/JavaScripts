@@ -1,13 +1,13 @@
 {
     "id": "cxk.app.sub",
-    "name": "书旗脚本订阅",
-    "author": "@caixukun1@zw",
+    "name": "书旗 脚本订阅",
+    "author": "@caixukun1",
     "apps": [	 
-		{
+	     {
             "id":"sqxh",
-            "name":"书旗抽奖",
+            "name":"书旗小说",
             "keys":[
-
+		    
 				"vediodrawprizeck1",
 				"drawck1",
 				"userinfock1",
