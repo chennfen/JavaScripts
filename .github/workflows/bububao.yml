@@ -29,9 +29,12 @@ jobs:
         if: env.BBB_bububaoTOKEN
         run: |
           npm install
+          
       - name: '运行 【步步宝】'
+        if: env.BBB_bububaoTOKEN
         run: |
           node Task/bububao2.js
+        
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
