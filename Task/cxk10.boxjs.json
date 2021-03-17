@@ -1,10 +1,10 @@
 {
 	"id": "cxk.app.sub",
-	"name": "书旗 脚本订阅",
-	"author": "@caixukun1",
+	"name": "书旗抽奖 脚本订阅",
+	"author": "@sq",
 	"apps": [{
 		"id": "sqxh",
-		"name": "书旗小说",
+		"name": "书旗抽奖",
 		"keys": [
 			"vediodrawprizeck1",
 			"drawck1",
@@ -44,8 +44,8 @@
 
 			"vediodrawprizeck10",
 			"drawck10",
-			"userinfock10"
-
+			"userinfock10",
+			
 			"vediodrawprizeck11",
 			"drawck11",
 			"userinfock11",
@@ -145,7 +145,7 @@
 			{
 				"id": "CountNumber",
 				"name": "账号个数",
-				"val": "1",
+				"val": "32",
 				"type": "number",
 				"desc": "指定任务最多跑几个账号，根据抓取的账号数据个数来设值"
 			}
