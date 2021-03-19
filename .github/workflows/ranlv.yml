@@ -3,7 +3,7 @@ name: ranlv@zhiyi2
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0,30 0-12 * * *'
+    - cron: '0,30 0-18 * * *'
   watch:
     types: started
   repository_dispatch:
