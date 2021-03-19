@@ -3,8 +3,8 @@ name: cfz@feizao3
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0 0-21/3 * * *'
-     - cron: '30 1-22/3 * * *'
+     - cron: '0 0-22/2 * * *'
+     - cron: '30 1-23/2 * * *'
   watch:
     types: started
   repository_dispatch:
