@@ -2,8 +2,7 @@ name: baidu_speed@Sunert4
 on:
     workflow_dispatch:
     schedule:
-      - cron: "13/30 * * * *"
-      - cron: "1/30 * * * *"
+      - cron: "2,22,42 * * * *"
     watch:
       types: [started]
 jobs:
