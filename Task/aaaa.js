@@ -70,7 +70,60 @@ let sdid = '';sdlqid = '';tc = 0
   if (typeof $request !== "undefined") {
     await cfzck()
    
-  } else {cfzurlArr.push($.getdata('cfzurl'))
+  } else {
+  if ($.isNode()) {
+  COOKIES_SPLIT = process.env.COOKIES_SPLIT || "\n";
+  console.log(
+    `============ cookies分隔符为：${JSON.stringify(
+      COOKIES_SPLIT
+    )} =============\n`
+  );
+if (
+    process.env.CFZURL &&
+    process.env.CFZURL.indexOf(COOKIES_SPLIT) > -1
+  ) {
+    cfzurl = process.env.CFZURL.split(COOKIES_SPLIT);
+  } else {
+    cfzurl = process.env.CFZURL.split();
+  }
+  if (
+    process.env.CFZHD &&
+    process.env.CFZHD.indexOf(COOKIES_SPLIT) > -1
+  ) {
+    cfzhd = process.env.CFZHD.split(COOKIES_SPLIT);
+  } else {
+    cfzhd = process.env.CFZHD.split();
+  }
+  if (
+    process.env.CFZSBHD &&
+    process.env.CFZSBHD.indexOf(COOKIES_SPLIT) > -1
+  ) {
+    cfzsbhd = process.env.CFZSBHD.split(COOKIES_SPLIT);
+  } else {
+    cfzsbhd = process.env.CFZSBHD.split();
+  }
+
+
+	
+  Object.keys(cfzurl).forEach((item) => {
+        if (cfzurl[item]) {
+          cfzurlArr.push(cfzurl[item])
+        }
+    });
+    Object.keys(cfzhd).forEach((item) => {
+        if (cfzhd[item]) {
+          cfzhdArr.push(cfzhd[item])
+        }
+    });
+    Object.keys(cfzsbhd).forEach((item) => {
+        if (cfzsbhd[item]) {
+          cfzsbhdArr.push(cfzsbhd[item])
+        }
+    });
+
+  	
+  } else {	  
+    cfzurlArr.push($.getdata('cfzurl'))
     cfzhdArr.push($.getdata('cfzhd'))
     cfzsbhdArr.push($.getdata('cfzsbhd'))
     let cfzcount = ($.getval('cfzcount') || '1');
@@ -78,6 +131,7 @@ let sdid = '';sdlqid = '';tc = 0
     cfzurlArr.push($.getdata(`cfzurl${i}`))
     cfzhdArr.push($.getdata(`cfzhd${i}`))
     cfzsbhdArr.push($.getdata(`cfzsbhd${i}`))
+  }
   }
     let execAcList = [];
     let slot = cfzhdArr.length % concurrency == 0 ? cfzhdArr.length / concurrency : parseInt(cfzhdArr.length / concurrency) + 1;
@@ -300,8 +354,8 @@ let sj = Math.floor(Math.random() * 500); //生成随机数
             if (result.code == 200) {
               let list = (result.data && result.data.list) || []
               if (list.length > 0) {
-                ac.cfzid = list[1].id
-                console.log('\n春风转[阅读列表]回执:成功🌝  \n📄阅读ID:' + ac.cfzid + '\n📑开始阅读:' + list[1].title)
+                ac.cfzid = list[0].id
+                console.log('\n春风转[阅读列表]回执:成功🌝  \n📄阅读ID:' + ac.cfzid + '\n📑开始阅读:' + list[0].title)
                 await $.wait(500);
                 await cfzyd(ac);
               } else {
@@ -445,7 +499,7 @@ if(result.message =='该任务您还未完成'){
 console.log('\n春风转[领取每日任务晒图奖励]回执:失败🌚'+result.message)
 for (let i = 0; i < 3; i++) {
          
-        $.log(`春风转开始执行晒图任务，本次共执行3次，已执行${i+1}次`)
+        $.log(`春风转开始执行观看福利视频，本次共执行3次，已执行${i+1}次`)
         await cfzrwst(ac)
 await $.wait(10000)
       }
