@@ -35,7 +35,7 @@ jobs:
 
       - name: '运行 【番茄看看】'
         run: |
-          node Task/fqkk.js
+          node Task/1.js
 
 
 
