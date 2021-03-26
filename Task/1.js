@@ -87,10 +87,10 @@ let fqkk =[
     "hd": "{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Origin\":\"http://m.aixizhushou.site\",\"Cookie\":\"autoRead=1; Hm_lpvt_84099950848427564e5e4b4310ad032e=1616746072; Hm_lvt_84099950848427564e5e4b4310ad032e=1616746072; udtauth=e02cSps58SypZz7SX9RwiAaKOqtOKbRE7Kcw6HoKfqm0FI3Ssc5KNH0pZck6Z017d4G8L1DZi9%2Fdzb7%2F7D3AblIiLv0lA4uyYe9DHpozO4SG3o%2FvWI853iLRNtKvw04ooP00kqVoRgeJwsbonnSdhlSBK43SLam9foDmoc9ViYk; PHPSESSID=3nosla1mp929vk2mukfu7gn8p0\",\"Connection\":\"keep-alive\",\"Host\":\"m.aixizhushou.site\",\"Content-Length\":\"0\",\"User-Agent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.2(0x18000238) NetType/4G Language/zh_CN\",\"Referer\":\"http://m.aixizhushou.site/reada?upuid=3964086\",\"Accept-Language\":\"zh-cn\",\"X-Requested-With\":\"XMLHttpRequest\"}"
   }
 ]
-let fqkkBanfirstTask = $.getval('fqkkBanfirstTask') || 'false' // 禁止脚本执行首个任务，避免每日脚本跑首次任务导致微信限制
+let fqkkBanfirstTask = $.getval('fqkkBanfirstTask') || 'true' // 禁止脚本执行首个任务，避免每日脚本跑首次任务导致微信限制
 let fqkkCkMoveFlag = $.getval('fqkkCkMove') || ''
-let fqtx = ($.getval('fqtx') || '100');  // 此处修改提现金额，0.3元等于30，默认为提现一元，也就是100
-let concurrency = ($.getval('fqkkConcurrency') || '1') - 0; // 并发执行任务的账号数，默单账号循环执行
+let fqtx = ($.getval('fqtx') || '200');  // 此处修改提现金额，0.3元等于30，默认为提现一元，也就是100
+let concurrency = ($.getval('fqkkConcurrency') || '3') - 0; // 并发执行任务的账号数，默单账号循环执行
 concurrency = concurrency < 1 ? 1 : concurrency;
 let fqkktz = ''
 !(async () => {
