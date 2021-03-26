@@ -1,4 +1,6 @@
 /*
+固定ck！！！
+
 软件名称:番茄看看 微信扫描二维码打开
 更新时间：2021-03-05 @肥皂
 脚本说明：番茄看看自动阅读
@@ -71,7 +73,7 @@ hostname = m.*
 const $ = new Env('番茄看看');
 const fqkkurlArr = [], fqkkhdArr = []
 
-
+//在这里替换自己ck
 let fqkk =[
   {
     "uid": 3964086,
