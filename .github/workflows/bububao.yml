@@ -32,6 +32,7 @@ jobs:
           node Task/bububao.js
         
         env:
+          BBB_bububaoTOKEN: ${{ secrets.BBB_bububaoTOKEN }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
