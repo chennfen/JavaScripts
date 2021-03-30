@@ -7,7 +7,7 @@ const $ = Env(jsname)
 const logs = 0;
 //0为关闭通知，1为所有通知,默认为0
 const notify = $.isNode() ? require("./sendNotify") : ``;
-const notifyInterval = 1;
+const notifyInterval = 0;
 //通知风格
 let tz = '';
 let version = $.getval('version') || "1.5.2"; //APP版本号,更新请到APP更改
