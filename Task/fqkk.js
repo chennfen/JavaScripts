@@ -67,7 +67,7 @@ hostname = m.*
 
 */
 
-let fqkk = require('./fqkkck.json');
+//let fqkk = require('./fqkkck.json');
 
 const $ = new Env('番茄看看');
 const fqkkurlArr = [], fqkkhdArr = []
