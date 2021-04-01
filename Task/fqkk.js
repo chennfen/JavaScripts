@@ -67,8 +67,7 @@ hostname = m.*
 
 */
 
-//let fqkk = require('./fqkkck.json');
-
+let fqkk = require('./fqkkck.json');
 const $ = new Env('番茄看看');
 const fqkkurlArr = [], fqkkhdArr = []
 let fqkk = $.getjson('fqkk', [])
@@ -79,7 +78,7 @@ let concurrency = ($.getval('fqkkConcurrency') || '3') - 0; // 并发执行任�
 concurrency = concurrency < 1 ? 1 : concurrency;
 let fqkktz = ''
 
-/*ck解密*/
+/*
 let fs = require('fs');
 const crypto = require('crypto');
 
@@ -89,15 +88,20 @@ function aesDecrypt(encrypted, key) {
     decrypted += decipher.final('utf8');
     return decrypted;
 }
-
+*/
 
 !(async () => {
-  if ($.isNode()) {
+ 
+    
+/*
+if ($.isNode()) {
         let encrypted = fs.readFileSync('./fqkkck.txt', 'utf8');
         key = process.env.ENCRYPT_KEY;
         let decrypted = await aesDecrypt(encrypted, key);
         fqkk = JSON.parse(decrypted);
-  } else if (typeof $request !== "undefined") {
+  } else 
+*/ 
+      if (typeof $request !== "undefined") {
     await fqkkck();
   } else if (fqkkCkMoveFlag == 'true') {
     await fqkkCkMove();
