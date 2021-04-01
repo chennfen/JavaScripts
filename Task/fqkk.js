@@ -101,13 +101,13 @@ if ($.isNode()) {
         fqkk = JSON.parse(decrypted);
   } else 
 */ 
-      if ($.isNode()) {
-        let fqkk = require('./fqkkck.json');
-  } else if (typeof $request !== "undefined") {
+         if (typeof $request !== "undefined") {
     await fqkkck();
   } else if (fqkkCkMoveFlag == 'true') {
     await fqkkCkMove();
-  } else {
+  } else if ($.isNode()) {
+        let fqkk = require('./fqkkck.json');
+    else {
     let acList = fqkk.filter(o => o.hd).map((o, i) => ({no: i+1, uid: o.uid, gold: 0, score: 0, rest: 0, num: 0, url: o.url, headers: JSON.parse(o.hd)}));
     let execAcList = [];
     let slot = acList.length % concurrency == 0 ? acList.length / concurrency : parseInt(acList.length / concurrency) + 1;
