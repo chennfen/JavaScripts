@@ -91,9 +91,8 @@ function aesDecrypt(encrypted, key) {
 }
 */
 
-!(async () => {
- 
-    
+//!(async () => {
+async function all() {   
 /*
 if ($.isNode()) {
         let encrypted = fs.readFileSync('./fqkkck.txt', 'utf8');
