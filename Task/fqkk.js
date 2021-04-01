@@ -69,7 +69,7 @@ hostname = m.*
 
 const $ = new Env('番茄看看');
 const fqkkurlArr = [], fqkkhdArr = []
-let fqkk = $.getjson('fqkk', [])
+//let fqkk = $.getjson('fqkk', [])
 let fqkkBanfirstTask = $.getval('fqkkBanfirstTask') || 'true' // 禁止脚本执行首个任务，避免每日脚本跑首次任务导致微信限制
 let fqkkCkMoveFlag = $.getval('fqkkCkMove') || ''
 let fqtx = ($.getval('fqtx') || '256');  // 此处修改提现金额，0.3元等于30，默认为提现一元，也就是100
@@ -78,7 +78,20 @@ concurrency = concurrency < 1 ? 1 : concurrency;
 let fqkktz = ''
 
 
+/*ck解密*/
+let fs = require('fs');
+const crypto = require('crypto');
+
+function aesDecrypt(encrypted, key) {
+    const decipher = crypto.createDecipher('aes192', key);
+    let decrypted = decipher.update(encrypted, 'hex', 'utf8');
+    decrypted += decipher.final('utf8');
+    return decrypted;
+}
+
+
 !(async () => { 
+   
    if (typeof $request !== "undefined") {
     await fqkkck();
   } else if (fqkkCkMoveFlag == 'true') {
@@ -96,10 +109,10 @@ let fqkktz = ''
       }
     });
      
- async function all() {
-    //nodejs运行
-    if ($.isNode()) {
-        let fqkkck = require('./fqkkck.json');
+        let encrypted = fs.readFileSync('./fqkkck.txt', 'utf8');
+        key = process.env.ENCRYPT_KEY;
+        let decrypted = await aesDecrypt(encrypted, key);
+        fqkk = JSON.parse(decrypted);
        
     $.log(`番茄看看当前设置的提现金额为: ${fqtx / 100} 元`, `----------- 共${acList.length}个账号分${execAcList.length}组去执行 -----------`);
     for (let arr of execAcList) {
@@ -122,9 +135,6 @@ let fqkktz = ''
   .finally(() => $.done());
      
      
-  }
-}
-  
   
   
   
