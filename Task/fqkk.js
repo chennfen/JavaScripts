@@ -67,7 +67,7 @@ hostname = m.*
 
 */
 
-let fqkk = require('./fqkkck.json');
+
 const $ = new Env('番茄看看');
 const fqkkurlArr = [], fqkkhdArr = []
 let fqkk = $.getjson('fqkk', [])
@@ -79,6 +79,7 @@ concurrency = concurrency < 1 ? 1 : concurrency;
 let fqkktz = ''
 
 /*
+//解密
 let fs = require('fs');
 const crypto = require('crypto');
 
@@ -101,7 +102,9 @@ if ($.isNode()) {
         fqkk = JSON.parse(decrypted);
   } else 
 */ 
-      if (typeof $request !== "undefined") {
+      if ($.isNode()) {
+        let fqkk = require('./fqkkck.json');
+  } else if (typeof $request !== "undefined") {
     await fqkkck();
   } else if (fqkkCkMoveFlag == 'true') {
     await fqkkCkMove();
