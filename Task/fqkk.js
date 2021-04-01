@@ -77,10 +77,6 @@ let concurrency = ($.getval('fqkkConcurrency') || '3') - 0; // 并发执行任�
 concurrency = concurrency < 1 ? 1 : concurrency;
 let fqkktz = ''
 
-let encrypted = fs.readFileSync('./fqkkck.txt', 'utf8');
-key = process.env.ENCRYPT_KEY;
-let decrypted = await aesDecrypt(encrypted, key);
-fqkk = JSON.parse(decrypted);
 
 /*ck解密*/
 let fs = require('fs');
@@ -95,8 +91,13 @@ function aesDecrypt(encrypted, key) {
 
 
 !(async () => { 
-   
-   if (typeof $request !== "undefined") {
+
+    if ($.isNode()) {
+    let encrypted = fs.readFileSync('./fqkkck.txt', 'utf8');
+    key = process.env.ENCRYPT_KEY;
+    let decrypted = await aesDecrypt(encrypted, key);
+    fqkk = JSON.parse(decrypted);
+  } else if (typeof $request !== "undefined") {
     await fqkkck();
   } else if (fqkkCkMoveFlag == 'true') {
     await fqkkCkMove();
