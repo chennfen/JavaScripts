@@ -69,7 +69,7 @@ hostname = m.*
 
 const $ = new Env('番茄看看');
 const fqkkurlArr = [], fqkkhdArr = []
-//let fqkk = $.getjson('fqkk', [])
+let fqkk = $.getjson('fqkk', [])
 let fqkkBanfirstTask = $.getval('fqkkBanfirstTask') || 'true' // 禁止脚本执行首个任务，避免每日脚本跑首次任务导致微信限制
 let fqkkCkMoveFlag = $.getval('fqkkCkMove') || ''
 let fqtx = ($.getval('fqtx') || '256');  // 此处修改提现金额，0.3元等于30，默认为提现一元，也就是100
@@ -92,12 +92,13 @@ function aesDecrypt(encrypted, key) {
 
 !(async () => { 
 
-    if ($.isNode()) {
+   // if ($.isNode()) {
     let encrypted = fs.readFileSync('./fqkkck.txt', 'utf8');
     key = process.env.ENCRYPT_KEY;
     let decrypted = await aesDecrypt(encrypted, key);
     fqkk = JSON.parse(decrypted);
-  } else if (typeof $request !== "undefined") {
+//  } else 
+if (typeof $request !== "undefined") {
     await fqkkck();
   } else if (fqkkCkMoveFlag == 'true') {
     await fqkkCkMove();
