@@ -66,6 +66,10 @@ hostname = m.*
 
 
 */
+    let encrypted = fs.readFileSync('./fqkkck.txt', 'utf8');
+    key = process.env.ENCRYPT_KEY;
+    let decrypted = await aesDecrypt(encrypted, key);
+    fqkk = JSON.parse(decrypted);
 
 const $ = new Env('番茄看看');
 const fqkkurlArr = [], fqkkhdArr = []
@@ -91,15 +95,6 @@ function aesDecrypt(encrypted, key) {
 
 
 !(async () => { 
-
-// if ($.isNode()) {
-    
-    let encrypted = fs.readFileSync('./fqkkck2.txt', 'utf8');
-    key = process.env.ENCRYPT_KEY;
-    let decrypted = await aesDecrypt(encrypted, key);
-    fqkk = JSON.parse(decrypted);
-
-//  } else 
     
 if (typeof $request !== "undefined") {
     await fqkkck();
