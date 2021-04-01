@@ -67,7 +67,6 @@ hostname = m.*
 
 */
 
-
 const $ = new Env('番茄看看');
 const fqkkurlArr = [], fqkkhdArr = []
 let fqkk = $.getjson('fqkk', [])
@@ -78,36 +77,14 @@ let concurrency = ($.getval('fqkkConcurrency') || '3') - 0; // 并发执行任�
 concurrency = concurrency < 1 ? 1 : concurrency;
 let fqkktz = ''
 
-/*
-//解密
-let fs = require('fs');
-const crypto = require('crypto');
 
-function aesDecrypt(encrypted, key) {
-    const decipher = crypto.createDecipher('aes192', key);
-    let decrypted = decipher.update(encrypted, 'hex', 'utf8');
-    decrypted += decipher.final('utf8');
-    return decrypted;
-}
-*/
+!(async () => { 
 
-//!(async () => {
-async function all() {   
-/*
-if ($.isNode()) {
-        let encrypted = fs.readFileSync('./fqkkck.txt', 'utf8');
-        key = process.env.ENCRYPT_KEY;
-        let decrypted = await aesDecrypt(encrypted, key);
-        fqkk = JSON.parse(decrypted);
-  } else 
-*/ 
-         if (typeof $request !== "undefined") {
+   if (typeof $request !== "undefined") {
     await fqkkck();
   } else if (fqkkCkMoveFlag == 'true') {
     await fqkkCkMove();
-  } else if ($.isNode()) {
-        let fqkk = require('./fqkkck.json');
-    else {
+  } else {
     let acList = fqkk.filter(o => o.hd).map((o, i) => ({no: i+1, uid: o.uid, gold: 0, score: 0, rest: 0, num: 0, url: o.url, headers: JSON.parse(o.hd)}));
     let execAcList = [];
     let slot = acList.length % concurrency == 0 ? acList.length / concurrency : parseInt(acList.length / concurrency) + 1;
