@@ -79,7 +79,6 @@ let fqkktz = ''
 
 
 !(async () => { 
-
    if (typeof $request !== "undefined") {
     await fqkkck();
   } else if (fqkkCkMoveFlag == 'true') {
@@ -96,6 +95,12 @@ let fqkktz = ''
         execAcList[idx] = [o];
       }
     });
+     
+ async function all() {
+    //nodejs运行
+    if ($.isNode()) {
+        let fqkkck = require('./fqkkck.json');
+       
     $.log(`番茄看看当前设置的提现金额为: ${fqtx / 100} 元`, `----------- 共${acList.length}个账号分${execAcList.length}组去执行 -----------`);
     for (let arr of execAcList) {
       let allAc = arr.map(ac=>ac.no).join(', ');
@@ -115,7 +120,14 @@ let fqkktz = ''
 })()
 .catch((e) => $.logErr(e))
   .finally(() => $.done());
-
+     
+     
+  }
+}
+  
+  
+  
+  
 function execTask(ac, i) {
   return new Promise(resolve => {
     setTimeout(async () => {
