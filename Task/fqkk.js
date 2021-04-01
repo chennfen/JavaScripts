@@ -92,12 +92,15 @@ function aesDecrypt(encrypted, key) {
 
 !(async () => { 
 
-   // if ($.isNode()) {
-    let encrypted = fs.readFileSync('./fqkkck.txt', 'utf8');
+// if ($.isNode()) {
+    
+    let encrypted = fs.readFileSync('./fqkkck2.txt', 'utf8');
     key = process.env.ENCRYPT_KEY;
     let decrypted = await aesDecrypt(encrypted, key);
     fqkk = JSON.parse(decrypted);
+
 //  } else 
+    
 if (typeof $request !== "undefined") {
     await fqkkck();
   } else if (fqkkCkMoveFlag == 'true') {
