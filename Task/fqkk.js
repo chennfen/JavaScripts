@@ -72,9 +72,9 @@ hostname = m.*
 const $ = new Env('番茄看看');
 const fqkkurlArr = [], fqkkhdArr = []
 let fqkk = $.getjson('fqkk', [])
-let fqkkBanfirstTask = $.getval('fqkkBanfirstTask') || 'false' // 禁止脚本执行首个任务，避免每日脚本跑首次任务导致微信限制
+let fqkkBanfirstTask = $.getval('fqkkBanfirstTask') || 'true' // 禁止脚本执行首个任务，避免每日脚本跑首次任务导致微信限制
 let fqkkCkMoveFlag = $.getval('fqkkCkMove') || ''
-let fqtx = ($.getval('fqtx') || '300');  // 此处修改提现金额，0.3元等于30，默认为提现一元，也就是100
+let fqtx = ($.getval('fqtx') || '256');  // 此处修改提现金额，0.3元等于30，默认为提现一元，也就是100
 let concurrency = ($.getval('fqkkConcurrency') || '3') - 0; // 并发执行任务的账号数，默单账号循环执行
 concurrency = concurrency < 1 ? 1 : concurrency;
 let fqkktz = ''
