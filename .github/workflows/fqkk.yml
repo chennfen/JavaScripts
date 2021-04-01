@@ -1,10 +1,12 @@
-name: fqkk@test
+name: fqkk@feizao3
 on:
   workflow_dispatch:
   watch:
     types: started
   schedule:
-    - cron: '5 */6 * * *'
+    - cron: '0 4-16/3 * * *'
+    - cron: '30 5-16/3 * * *'
+
 jobs:
   build:
     runs-on: macos-latest       
