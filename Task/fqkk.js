@@ -69,7 +69,26 @@ hostname = m.*
 
 const $ = new Env('番茄看看');
 const fqkkurlArr = [], fqkkhdArr = []
-let fqkk = $.getjson('fqkk', [])
+//let fqkk = $.getjson('fqkk', [])
+
+let fqkk = [
+  {
+    "uid": 3964086,
+    "url": "http://m.aixizhushou.site/reada/getTask",
+    "hd": "{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Origin\":\"http://m.aixizhushou.site\",\"Cookie\":\"autoRead=1; Hm_lpvt_84099950848427564e5e4b4310ad032e=1616745921; Hm_lvt_84099950848427564e5e4b4310ad032e=1616745908; udtauth=b844nQYPc%2Bb4Dx2MCZDKXted4wtIjjV0hs8SYAmR%2FPWkvAOOsRKCidy35rVwQqzJ5CU0uaTnt1yVvIWnjbVMRpfY86lUUd8pArjwK3U9yPqGnhZVYmbmfukG8p1nJ9kU2J0mwDpjjH%2BDU%2BnMyXUiannu0nlkj1lDOprbjAoXu6A; PHPSESSID=85d6ddltbah2mvg1n06q2m0omc\",\"Connection\":\"keep-alive\",\"Host\":\"m.aixizhushou.site\",\"Content-Length\":\"0\",\"User-Agent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.2(0x18000238) NetType/4G Language/zh_CN\",\"Referer\":\"http://m.aixizhushou.site/reada?upuid=3964086\",\"Accept-Language\":\"zh-cn\",\"X-Requested-With\":\"XMLHttpRequest\"}"
+  },
+  {
+    "uid": 3964075,
+    "url": "http://m.aixizhushou.site/reada/getTask",
+    "hd": "{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Origin\":\"http://m.aixizhushou.site\",\"Cookie\":\"autoRead=1; Hm_lpvt_84099950848427564e5e4b4310ad032e=1616745985; Hm_lvt_84099950848427564e5e4b4310ad032e=1616745985; udtauth=62c9rKyiRFMZ%2BR%2FWT%2BCTjhkReC5FbLvAdAQZNGk0tHY7Tpk3uX5gnYVIUXxeFHhAWIfSGjQQ1V0HqD7qVNMoKOUF2xeWrXyjiv9xYRbk62iTwP%2F1mMS%2BBiCd6rLRS4TPyLW3WRJIaGh2h6nQzeohaZa2ySieh6X%2B0XmLvZ2Gtzw; PHPSESSID=5ohm9c9dfuiq7ua72lae73ol46\",\"Connection\":\"keep-alive\",\"Host\":\"m.aixizhushou.site\",\"Content-Length\":\"0\",\"User-Agent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.2(0x18000238) NetType/4G Language/zh_CN\",\"Referer\":\"http://m.aixizhushou.site/reada?upuid=3964086\",\"Accept-Language\":\"zh-cn\",\"X-Requested-With\":\"XMLHttpRequest\"}"
+  },
+  {
+    "uid": 3965185,
+    "url": "http://m.aixizhushou.site/reada/getTask",
+    "hd": "{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Origin\":\"http://m.aixizhushou.site\",\"Cookie\":\"autoRead=1; Hm_lpvt_84099950848427564e5e4b4310ad032e=1616746072; Hm_lvt_84099950848427564e5e4b4310ad032e=1616746072; udtauth=e02cSps58SypZz7SX9RwiAaKOqtOKbRE7Kcw6HoKfqm0FI3Ssc5KNH0pZck6Z017d4G8L1DZi9%2Fdzb7%2F7D3AblIiLv0lA4uyYe9DHpozO4SG3o%2FvWI853iLRNtKvw04ooP00kqVoRgeJwsbonnSdhlSBK43SLam9foDmoc9ViYk; PHPSESSID=3nosla1mp929vk2mukfu7gn8p0\",\"Connection\":\"keep-alive\",\"Host\":\"m.aixizhushou.site\",\"Content-Length\":\"0\",\"User-Agent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.2(0x18000238) NetType/4G Language/zh_CN\",\"Referer\":\"http://m.aixizhushou.site/reada?upuid=3964086\",\"Accept-Language\":\"zh-cn\",\"X-Requested-With\":\"XMLHttpRequest\"}"
+  }
+]
+
 let fqkkBanfirstTask = $.getval('fqkkBanfirstTask') || 'true' // 禁止脚本执行首个任务，避免每日脚本跑首次任务导致微信限制
 let fqkkCkMoveFlag = $.getval('fqkkCkMove') || ''
 let fqtx = ($.getval('fqtx') || '256');  // 此处修改提现金额，0.3元等于30，默认为提现一元，也就是100
@@ -78,7 +97,7 @@ concurrency = concurrency < 1 ? 1 : concurrency;
 let fqkktz = ''
 
 
-/*ck解密*/
+/*ck解密
 let fs = require('fs');
 const crypto = require('crypto');
 
@@ -88,15 +107,15 @@ function aesDecrypt(encrypted, key) {
     decrypted += decipher.final('utf8');
     return decrypted;
 }
-
+*/
 
 !(async () => {
  
-    let encrypted = fs.readFileSync('./fqkkck.txt', 'utf8');
+  /*  let encrypted = fs.readFileSync('./fqkkck.txt', 'utf8');
     key = process.env.ENCRYPT_KEY;
     let decrypted = await aesDecrypt(encrypted, key);
     fqkk = JSON.parse(decrypted);
-
+*/
 if (typeof $request !== "undefined") {
     await fqkkck();
   } else if (fqkkCkMoveFlag == 'true') {
