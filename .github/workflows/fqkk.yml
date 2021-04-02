@@ -1,4 +1,4 @@
-name: fqkk@feizao3
+name: fqkk@test
 on:
   workflow_dispatch:
   watch:
