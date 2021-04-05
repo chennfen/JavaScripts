@@ -1,4 +1,4 @@
-name: hifini@s0urcelab
+name: hifini@s0urcelab1
 on:
     workflow_dispatch:
     schedule:
