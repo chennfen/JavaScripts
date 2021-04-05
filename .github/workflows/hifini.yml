@@ -23,7 +23,6 @@ jobs:
         run: |
           npm install
       - name: '运行 【音乐磁场签到】'
-        if: env.HIFINI_COOKIE
         run: |
           node Task/hifini.js
         env:
