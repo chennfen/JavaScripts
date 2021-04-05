@@ -10,7 +10,7 @@ jobs:
     runs-on: macos-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        BAIDU_COOKIE: ${{ secrets.HIFINI_COOKIE }}
+        HIFINI_COOKIE: ${{ secrets.HIFINI_COOKIE }}
         TZ: Asia/shanghai
     steps:
       - name: Checkout
