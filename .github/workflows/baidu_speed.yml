@@ -1,8 +1,8 @@
-name: baidu_speed@Sunert2
+name: baidu_speed@Sunert4
 on:
     workflow_dispatch:
     schedule:
-      - cron: "2,32 * * * *"
+      - cron: "4,34 * * * *"
     watch:
       types: [started]
 jobs:
