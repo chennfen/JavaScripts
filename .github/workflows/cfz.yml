@@ -33,7 +33,7 @@ jobs:
           npm install
       - name: '运行 【春风转】'
         run: |
-          node Task/cfz311.js
+          node Task/cfz.js
         env:
           CFZURL: ${{ secrets.CFZURL }}
           CFZHD: ${{ secrets.CFZHD }}
